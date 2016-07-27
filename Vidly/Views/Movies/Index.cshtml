@@ -6,6 +6,9 @@
 
 <h2>Movies</h2>
 
+<a href="@Url.Action("New", "Movies")" class="btn btn-primary"><i class="fa fa-plus-circle"></i> Add Movie</a>
+<br/><br/>
+
 @if (Model.Movies.Count == 0)
 {
     <p>No Movies exist yet.</p>
@@ -14,11 +17,17 @@ else
 {
     <table class="table table-striped">
         <thead>
-        <tr><th>Movie</th></tr>
+            <tr>
+                <th>Movie</th>
+                <th></th>
+            </tr>
         </thead>
         @foreach (var movie in Model.Movies)
         {
-        <tr><td>@Html.ActionLink(movie.Name, "Details", "Movies", new {id = movie.Id}, null)</td></tr>
+            <tr valign="middle">
+                <td>@Html.ActionLink(movie.Name, "Details", "Movies", new {id = movie.Id}, null)</td>
+                <td width="40"><a href="@Url.Action("Delete", "Movies", new {id = movie.Id})" class="btn btn-primary"><i class="fa fa-close"></i> Delete</a></td>
+            </tr>
         }
     </table>
 }

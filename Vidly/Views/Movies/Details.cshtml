@@ -5,5 +5,20 @@
 }
 
 <h2>@Model.Name</h2>
+<ul>
+    
+    @if (@Model.ReleaseDate != null)
+    {
+        <li>Release Date: @($"{@Model.ReleaseDate:dd/MM/yyyy}")</li>
+    }
+
+    <li>Genre: @Model.Genre.Name</li>
+
+    @if (@Model.DateAdded != null)
+    {
+        <li>Genre: @($"{@Model.DateAdded:dd/MM/yyyy}")</li>
+    }
+    <li>Number in stock: @Model.NumberInStock</li>
+</ul>
 
 

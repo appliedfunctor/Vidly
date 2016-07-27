@@ -4,5 +4,17 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+
+<br/>
+@Html.ActionLink("Edit", "Edit", "Customers", new { id = Model.Id }, new { @class = "btn btn-warning"})
+
 <h2>@Model.Name</h2>
 
+<ul>
+    <li>Membership Type: @Model.MembershipType.Name</li>
+    @if (@Model.Dob != null)
+    {
+        <li>Birthdate: @{ @String.Format("{0:dd/MM/yyyy}", @Model.Dob); }</li>
+    }
+    
+</ul>

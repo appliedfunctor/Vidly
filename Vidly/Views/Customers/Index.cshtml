@@ -6,19 +6,32 @@
 
 <h2>Customers</h2>
 
+<a href="@Url.Action("New", "Customers")" class="btn btn-primary"><i class="fa fa-user-plus"></i> Add Customer</a>
+<br><br>
+
 @if (@Model.Customers.Count == 0)
 {
     <p>No customers exist yet.</p>
 }
 else
 {
-    <table class="table table-striped">
+    <table class="table table-striped table-hover table-bordered">
         <thead>
-            <tr><th>Customer</th></tr>
+        <tr>
+            <th>Customer</th>
+            <th class="text-center">Membership Discount</th>
+            <th></th>
+        </tr>
         </thead>
             @foreach (var customer in @Model.Customers)
             {
-                <tr><td>@Html.ActionLink(@customer.Name, "Details", "Customers", new {id = customer.Id}, null)</td></tr>
+                <tr valign="middle">
+                    <td>@Html.ActionLink(@customer.Name, "Details", "Customers", new { id = customer.Id }, null)</td>
+                    <td class="text-center">@customer.MembershipType.Name</td>
+                    <td width="40"><a href="@Url.Action("Delete", "Customers", new {id = customer.Id})" class="btn btn-danger"><i class='fa fa-close'></i> Delete</a>
+                        
+                    </td>
+                </tr>
             }
 </table>
 }
